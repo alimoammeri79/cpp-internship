@@ -27,12 +27,12 @@ struct Action
 };
 
 bool is_mushroom(char block);
-int count_adjacent_mushrooms(std::vector<std::string>& world, Coordinate coordinates);
-void do_action(std::vector<std::string>& world, const std::vector<Action>& actions);
-bool game_of_life(std::vector<std::string>& world);
-std::string to_binary(size_t a, size_t n);
-size_t mushrooms_count(const std::vector<std::string>& world);
-std::vector<std::string> find_initial_step(std::vector<std::string>& world, const std::vector<std::string>& goal,
+int count_adjacent_mushrooms(std::vector<std::string>& table, Coordinate coordinates);
+void do_action(std::vector<std::string>& table, const std::vector<Action>& actions);
+bool evolve(std::vector<std::string>& table);
+std::string to_binary(size_t number, size_t length);
+size_t count_mushrooms(const std::vector<std::string>& table);
+std::vector<std::string> find_initial_step(std::vector<std::string>& table, const std::vector<std::string>& final_table,
                                            std::size_t n, std::size_t m, std::size_t l, std::size_t current=0);
 
 /**
@@ -40,6 +40,5 @@ std::vector<std::string> find_initial_step(std::vector<std::string>& world, cons
     duplicate moves. But that doesn't work yet.
 bool extract_state(const std::vector<std::string>& a);
 **/
-
 
 #endif //reverseGOL_GOL_H

@@ -9,43 +9,43 @@ bool is_mushroom(char block)
     return (block == MSHRM);
 }
 
-int count_adjacent_mushrooms(std::vector<std::string>& world, Coordinate coordinates)
+int count_adjacent_mushrooms(std::vector<std::string>& table, Coordinate coordinates)
 {
     int count{0};
     int row{coordinates.x};
     int column{coordinates.y};
-    size_t width{world[row].length()};
-    size_t height{world.size()};
+    size_t width{table[row].length()};
+    size_t height{table.size()};
 
     for(int i{row - 1}; i <= row + 1; ++i)
         for(int j{column - 1}; j <= column + 1; ++j)
             if(i == row && j == column)
                 continue;
             else
-            if(world[(i + height) % height][(j + width) % width] == MSHRM)
+            if(table[(i + height) % height][(j + width) % width] == MSHRM)
                 ++count;
 
     return count;
 }
 
-void do_action(std::vector<std::string>& world, const std::vector<Action>& actions)
+void do_action(std::vector<std::string>& table, const std::vector<Action>& actions)
 {
     for(const auto& action: actions)
     {
         int x{action.coordinate.x};
         int y{action.coordinate.y};
-        world[x][y] = action.entity;
+        table[x][y] = action.entity;
     }
 }
 
-bool game_of_life(std::vector<std::string>& world)
+bool evolve(std::vector<std::string>& table)
 {
     std::vector<Action> actions;
-    for(int i{0}; i < world.size(); ++i)
-        for(int j{0}; j < world[i].length(); ++j)
+    for(int i{0}; i < table.size(); ++i)
+        for(int j{0}; j < table[i].length(); ++j)
         {
-            int adjacent_mushrooms_count = count_adjacent_mushrooms(world, Coordinate{i, j});
-            if(is_mushroom(world[i][j]))
+            int adjacent_mushrooms_count = count_adjacent_mushrooms(table, Coordinate{i, j});
+            if(is_mushroom(table[i][j]))
             {
                 if(!((adjacent_mushrooms_count == 3) || (adjacent_mushrooms_count == 2)))
                     actions.push_back({DEAD, Coordinate{i, j}});
@@ -57,51 +57,51 @@ bool game_of_life(std::vector<std::string>& world)
             }
         }
     if(!actions.empty()) {
-        do_action(world, actions);
+        do_action(table, actions);
         return true;
     }
     return false;
 }
 
-std::string to_binary(size_t a, size_t n)
+std::string to_binary(size_t number, size_t length)
 {
-    std::string result(n, DEAD);
-    for(std::size_t i{result.length()}; i-- && a;) {
-        result[i] = (a % 2) ?  MSHRM : DEAD;
-        a /= 2;
+    std::string result(length, DEAD);
+    for(std::size_t i{result.length()}; i-- && number;) {
+        result[i] = (number % 2) ?  MSHRM : DEAD;
+        number /= 2;
     }
     return result;
 }
 
-size_t mushrooms_count(const std::vector<std::string>& world)
+size_t count_mushrooms(const std::vector<std::string>& table)
 {
     size_t mushrooms{0};
-    for(const auto& row: world)
+    for(const auto& row: table)
         mushrooms+=std::count(row.cbegin(), row.cend(), MSHRM);
 
     return mushrooms;
 }
 
-std::vector<std::string> find_initial_step(std::vector<std::string>& world, const std::vector<std::string>& goal,
+std::vector<std::string> find_initial_step(std::vector<std::string>& table, const std::vector<std::string>& final_table,
                                            std::size_t n, std::size_t m, std::size_t l, std::size_t current) {
 
     if(n == current)
     {
-        std::vector<std::string> temp{world.begin(), world.end()};
+        std::vector<std::string> temp{table.begin(), table.end()};
 
         for(int i{0}; i < l; ++i) {
-            if((mushrooms_count(temp) < 3) || !game_of_life(temp))
+            if((count_mushrooms(temp) < 3) || !evolve(temp))
                 return std::vector<std::string>{};
         }
-        if(temp == goal)
-            return world;
+        if(temp == final_table)
+            return table;
 
         return std::vector<std::string>{};
     }
     for(std::size_t k{0}; k < pow(2, double(m)); ++k)
     {
-        world[current] = to_binary(k, m);
-        std::vector<std::string> result{find_initial_step(world, goal, n, m, l, current + 1)};
+        table[current] = to_binary(k, m);
+        std::vector<std::string> result{find_initial_step(table, final_table, n, m, l, current + 1)};
         if(!result.empty()){
             return result;
         }
