@@ -72,11 +72,11 @@ bool game_of_life(std::vector<std::string>& world)
             }
             else
             {
-                if((adjacent_mushrooms_count == 3))
+                if(adjacent_mushrooms_count == 3)
                     actions.push_back({MSHRM, Coordinate{i, j}});
             }
         }
-    if(actions.size()) {
+    if(!actions.empty()) {
         do_action(world, actions);
         return true;
     }
@@ -140,7 +140,7 @@ std::vector<std::string> find_initial_step(std::vector<std::string>& world, cons
     {
         world[current] = to_binary(k, m);
         std::vector<std::string> result{find_initial_step(world, goal, n, m, l, current + 1)};
-        if(result.size()){
+        if(!result.empty()){
             return result;
         }
     }
