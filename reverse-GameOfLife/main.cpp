@@ -8,18 +8,22 @@
 
 int main() {
 
-    std::size_t n{}, m{}, l{};
-    std::cin >> n >> m >> l;
+    std::size_t hight{}, width{}, level{};
+    std::cin >> hight >> width >> level;
 
-    std::vector<std::string> table{n};
-    std::vector<std::string> final_table{n};
+    std::vector<char> table(hight*width);
+    std::vector<char> final_table(hight*width);
     for(auto& row: final_table)
         std::cin >> row;
 
-    std::vector<std::string> result{find_initial_step(table, final_table, n, m, l)};
+    std::vector<char> result{get_initial_table(table, final_table, hight, width, level)};
     if(!result.empty())
-        for(const auto& row: result)
-            std::cout << row << "\n";
+        for (size_t i{0}; i < table.size(); i++)
+        {
+            std::cout << table[i];
+            if (i % width == width - 1)
+                std::cout << '\n';
+        }
     else
         std::cout << "impossible" << "\n";
 

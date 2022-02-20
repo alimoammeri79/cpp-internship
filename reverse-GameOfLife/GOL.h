@@ -27,18 +27,18 @@ struct Action
 };
 
 bool is_mushroom(char block);
-int count_adjacent_mushrooms(std::vector<std::string>& table, Coordinate coordinates);
-void do_action(std::vector<std::string>& table, const std::vector<Action>& actions);
-bool evolve(std::vector<std::string>& table);
+int count_adjacent_mushrooms(std::vector<char>& table, size_t hight, size_t width, Coordinate coordinates);
+void do_action(std::vector<char>& table, size_t hight, size_t width, const std::vector<Action>& actions);
+bool evolve(std::vector<char>& table, size_t hight, size_t width);
 std::string to_binary(size_t number, size_t length);
-size_t count_mushrooms(const std::vector<std::string>& table);
-std::vector<std::string> find_initial_step(std::vector<std::string>& table, const std::vector<std::string>& final_table,
+size_t count_mushrooms(const std::vector<char>& table, size_t hight, size_t width);
+std::vector<char> get_initial_table(std::vector<char>& table, const std::vector<char>& final_table,
                                            std::size_t n, std::size_t m, std::size_t l, std::size_t current=0);
 
 /**
     I'm trying to keep track of states in order to avoid
     duplicate moves. But that doesn't work yet.
-bool extract_state(const std::vector<std::string>& a);
+bool extract_state(const std::vector<char>& a);
 **/
 
 #endif //reverseGOL_GOL_H
