@@ -1,15 +1,16 @@
 /**
     This program tries to reverse "Conway's Game of Life" and guess it's initial state.
-    Right now it uses brute force to acheive that.
+    Right now it uses brute force to achieve that.
 **/
 
 #include <iostream>
+#include <cstddef>
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include <string>
 #define MSHRM '*'
 #define DEAD '.'
-using namespace std;
 
 struct Coordinate
 {
@@ -23,12 +24,12 @@ struct Action
     Coordinate coordinate{};
 };
 
-bool is_mashroom(char block)
+bool is_mushroom(char block)
 {
     return (block == MSHRM);
 }
 
-int count_adjacent_mashrooms(vector<string>& world, Coordinate coordinates)
+int count_adjacent_mushrooms(std::vector<std::string>& world, Coordinate coordinates)
 {
     int count{0};
     int row{coordinates.x};
@@ -41,13 +42,13 @@ int count_adjacent_mashrooms(vector<string>& world, Coordinate coordinates)
             if(i == row && j == column)
                 continue;
             else
-                if(world[(i + height) % height][(j + width) % width] == MSHRM)
-                    ++count;
+            if(world[(i + height) % height][(j + width) % width] == MSHRM)
+                ++count;
 
     return count;
 }
 
-void do_action(vector<string>& world, const vector<Action>& actions)
+void do_action(std::vector<std::string>& world, const std::vector<Action>& actions)
 {
     for(const auto& action: actions)
     {
@@ -57,21 +58,21 @@ void do_action(vector<string>& world, const vector<Action>& actions)
     }
 }
 
-bool game_of_life(vector<string>& world)
+bool game_of_life(std::vector<std::string>& world)
 {
-    vector<Action> actions;
+    std::vector<Action> actions;
     for(int i{0}; i < world.size(); ++i)
         for(int j{0}; j < world[i].length(); ++j)
         {
-            int adjacent_mashrooms_count = count_adjacent_mashrooms(world, Coordinate{i, j});
-            if(is_mashroom(world[i][j]))
+            int adjacent_mushrooms_count = count_adjacent_mushrooms(world, Coordinate{i, j});
+            if(is_mushroom(world[i][j]))
             {
-                if(!((adjacent_mashrooms_count == 3) || (adjacent_mashrooms_count == 2)))
+                if(!((adjacent_mushrooms_count == 3) || (adjacent_mushrooms_count == 2)))
                     actions.push_back({DEAD, Coordinate{i, j}});
             }
             else
             {
-                if((adjacent_mashrooms_count == 3))
+                if((adjacent_mushrooms_count == 3))
                     actions.push_back({MSHRM, Coordinate{i, j}});
             }
         }
@@ -82,17 +83,17 @@ bool game_of_life(vector<string>& world)
     return false;
 }
 
-string to_binary(int a, int n)
+std::string to_binary(int a, int n)
 {
-    string result(n, DEAD);
-    for(int i{result.length() - 1}; i >= 0 && a; --i) {
+    std::string result(n, DEAD);
+    for(std::size_t i{result.length()}; i-- && a;) {
         result[i] = (a % 2) ?  MSHRM : DEAD;
         a /= 2;
     }
     return result;
 }
 
-size_t mushrooms_count(const vector<string>& world)
+size_t mushrooms_count(const std::vector<std::string>& world)
 {
     size_t mushrooms{0};
     for(const auto& row: world)
@@ -107,11 +108,11 @@ size_t mushrooms_count(const vector<string>& world)
 // I'm trying to keep track of states in order to avoid
 // duplicate moves. But that dosn't work yet.
 
-bool extract_state(const vector<string>& a)
+bool extract_state(const std::vector<std::string>& a)
 {
-    string state{""};
+    std::string state{""};
     for(const auto& row: a)
-        state += to_string(stoi(row, nullptr, 2));
+        state += to_std::string(stoi(row, nullptr, 2));
     if (find(states.begin(), states.end(), state) == states.end()) {
         states.push_back(state);
         return true;
@@ -120,48 +121,48 @@ bool extract_state(const vector<string>& a)
 }
 **/
 
- vector<string> find_initial_step(vector<string>& world, const vector<string>& goal, int n, int m, int l, int current=0) {
+std::vector<std::string> find_initial_step(std::vector<std::string>& world, const std::vector<std::string>& goal, int n, int m, int l, int current=0) {
 
     if(n == current)
     {
-        vector<string> temp{world.begin(), world.end()};
+        std::vector<std::string> temp{world.begin(), world.end()};
 
         for(int i{0}; i < l; ++i) {
             if((mushrooms_count(temp) < 3) || !game_of_life(temp))
-                return vector<string>{};
+                return std::vector<std::string>{};
         }
         if(temp == goal)
             return world;
 
-        return vector<string>{};
+        return std::vector<std::string>{};
     }
     for(int k{0}; k < pow(2, m); ++k)
     {
         world[current] = to_binary(k, m);
-        vector<string> result{find_initial_step(world, goal, n, m, l, current + 1)};
+        std::vector<std::string> result{find_initial_step(world, goal, n, m, l, current + 1)};
         if(result.size()){
             return result;
         }
-	}
-	return vector<string>{};
+    }
+    return std::vector<std::string>{};
 }
 
 int main() {
 
-    int n{}, m{}, l{};
-    cin >> n >> m >> l;
+    std::size_t n{}, m{}, l{};
+    std::cin >> n >> m >> l;
 
-    vector<string> world{n};
-    vector<string> goal{n};
+    std::vector<std::string> world{n};
+    std::vector<std::string> goal{n};
     for(auto& row: goal)
-        cin >> row;
+        std::cin >> row;
 
-    vector<string> result{find_initial_step(world, goal, n, m, l)};
+    std::vector<std::string> result{find_initial_step(world, goal, n, m, l)};
     if(result.size())
         for(const auto& row: result)
-            cout << row << endl;
+            std::cout << row << "\n";
     else
-        cout << "impossible" << endl;
+        std::cout << "impossible" << "\n";
 
-	return 0;
+    return 0;
 }
