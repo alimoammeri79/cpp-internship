@@ -4,7 +4,7 @@
 **/
 
 #include <iostream>
-#include "GOL.h"
+#include "gol.h"
 
 int main() {
 

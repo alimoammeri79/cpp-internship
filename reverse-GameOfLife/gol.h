@@ -2,8 +2,8 @@
 // Created by ali on 20.02.22.
 //
 
-#ifndef reverseGOL_GOL_H
-#define reverseGOL_GOL_H
+#ifndef reverseGOL_gol_H
+#define reverseGOL_gol_H
 
 #include <vector>
 #include <cstddef>
@@ -41,4 +41,4 @@ std::vector<char> get_initial_table(std::vector<char>& table, const std::vector<
 bool extract_state(const std::vector<char>& a);
 **/
 
-#endif //reverseGOL_GOL_H
+#endif //reverseGOL_gol_H

@@ -2,7 +2,7 @@
     // Created by ali on 20.02.22.
     //
 
-    #include "GOL.h"
+    #include "gol.h"
 
     bool is_mushroom(char block)
     {
