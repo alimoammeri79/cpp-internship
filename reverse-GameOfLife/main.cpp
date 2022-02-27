@@ -4,28 +4,31 @@
 **/
 
 #include <iostream>
+#include <exception>
+#include "board.h"
 #include "gol.h"
 
 int main() {
 
     std::size_t hight{}, width{}, level{};
     std::cin >> hight >> width >> level;
+    if(!std::cin)
+        // Catching some exceptions
+        throw std::runtime_error("You should enter numbers only");
 
     std::vector<char> table(hight*width);
-    std::vector<char> final_table(hight*width);
-    for(auto& row: final_table)
+    // Getting input table
+    for(auto& row: table)
         std::cin >> row;
 
-    std::vector<char> result{get_initial_table(table, final_table, hight, width, level)};
-    if(!result.empty())
-        for (size_t i{0}; i < table.size(); i++)
-        {
-            std::cout << table[i];
-            if (i % width == width - 1)
-                std::cout << '\n';
-        }
-    else
+    Board board{table, hight, width};
+
+    Gol gol{board, level};
+    const Board result{gol.solve()};
+    if(result.is_empty())
         std::cout << "impossible" << "\n";
+    else
+        std::cout << result.to_string();
 
     return 0;
 }

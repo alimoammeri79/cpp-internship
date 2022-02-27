@@ -10,35 +10,33 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
+#include "board.h"
 
 #define MSHRM '*'
 #define DEAD '.'
 
-struct Coordinate
-{
-    int x{0};
-    int y{0};
-};
-
-struct Action
+struct Update
 {
     char entity{};
-    Coordinate coordinate{};
+    std::size_t row{};
+    std::size_t column{};
 };
 
-bool is_mushroom(char block);
-int count_adjacent_mushrooms(std::vector<char>& table, size_t hight, size_t width, Coordinate coordinates);
-void do_action(std::vector<char>& table, size_t hight, size_t width, const std::vector<Action>& actions);
-bool evolve(std::vector<char>& table, size_t hight, size_t width);
-std::string to_binary(size_t number, size_t length);
-size_t count_mushrooms(const std::vector<char>& table, size_t hight, size_t width);
-std::vector<char> get_initial_table(std::vector<char>& table, const std::vector<char>& final_table,
-                                           std::size_t n, std::size_t m, std::size_t l, std::size_t current=0);
-
-/**
-    I'm trying to keep track of states in order to avoid
-    duplicate moves. But that doesn't work yet.
-bool extract_state(const std::vector<char>& a);
-**/
+// Game of life class
+class Gol
+{
+public:
+    Gol(const Board& board, std::size_t level);
+    const std::string get_board() const;
+    const Board solve();
+private:
+    Board board;
+    std::size_t level;
+    bool is_mushroom(const char& block);
+    const Board evolve(const Board& board, const std::size_t level);
+    std::size_t count_adjacent_mushrooms(const Board& board, std::size_t row, std::size_t column);
+    void update_table(Board& board, const std::vector<Update>& updates);
+    const Board get_next_step(const Board &board);
+};
 
 #endif //reverseGOL_gol_H
