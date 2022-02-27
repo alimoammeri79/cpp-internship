@@ -2,8 +2,8 @@
 // Created by ali on 20.02.22.
 //
 
-#ifndef reverseGOL_gol_H
-#define reverseGOL_gol_H
+#ifndef GOL_H
+#define GOL_H
 
 #include <vector>
 #include <cstddef>
