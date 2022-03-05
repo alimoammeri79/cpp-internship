@@ -10,7 +10,7 @@
 #include <string>
 #include <algorithm>
 #include <cmath>
-#include "board.h"
+#include "Array_2D.h"
 
 #define MSHRM '*'
 #define DEAD '.'
@@ -26,17 +26,17 @@ struct Update
 class Gol
 {
 public:
-    Gol(const Board& board, std::size_t level);
-    const std::string get_board() const;
-    const Board solve();
+    Gol(const Array_2D<char>& table, std::size_t level);
+    Array_2D<char> get_table() const;
+    Array_2D<char> solve();
 private:
-    Board board;
+    Array_2D<char> table;
     std::size_t level;
     bool is_mushroom(const char& block);
-    const Board evolve(const Board& board, const std::size_t level);
-    std::size_t count_adjacent_mushrooms(const Board& board, std::size_t row, std::size_t column);
-    void update_table(Board& board, const std::vector<Update>& updates);
-    const Board get_next_step(const Board &board);
+    Array_2D<char> evolve(const Array_2D<char>& table, const std::size_t& level);
+    std::size_t count_adjacent_mushrooms(const Array_2D<char>& table, std::size_t row, std::size_t column);
+    void update_table(Array_2D<char>& table, const std::vector<Update>& updates);
+    const Array_2D<char> get_next_step(const Array_2D<char> &table);
 };
 
 #endif //reverseGOL_gol_H

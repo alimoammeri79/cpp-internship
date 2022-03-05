@@ -4,8 +4,7 @@
 **/
 
 #include <iostream>
-#include <exception>
-#include "board.h"
+#include "Array_2D.h"
 #include "gol.h"
 
 int main() {
@@ -16,19 +15,19 @@ int main() {
         // Catching some exceptions
         throw std::runtime_error("You should enter numbers only");
 
-    std::vector<char> table(hight*width);
+    Array_2D<char> table{hight, width, '.'};
     // Getting input table
-    for(auto& row: table)
-        std::cin >> row;
+    for(std::size_t i{0}; i < hight; ++i)
+        for(std::size_t j{0}; j < width; ++j)
+            std::cin >> table[i][j];
 
-    Board board{table, hight, width};
 
-    Gol gol{board, level};
-    const Board result{gol.solve()};
+    Gol gol{table, level};
+    const Array_2D<char> result{gol.solve()};
     if(result.is_empty())
         std::cout << "impossible" << "\n";
     else
-        std::cout << result.to_string();
+        std::cout << result << std::endl;
 
     return 0;
 }
