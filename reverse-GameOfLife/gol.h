@@ -30,8 +30,8 @@ public:
     Array_2D<char> get_table() const;
     Array_2D<char> solve();
 private:
-    Array_2D<char> table;
-    std::size_t level;
+    Array_2D<char> m_table;
+    std::size_t m_level;
     bool is_mushroom(const char& block);
     Array_2D<char> evolve(const Array_2D<char>& table, const std::size_t& level);
     std::size_t count_adjacent_mushrooms(const Array_2D<char>& table, std::size_t row, std::size_t column);

@@ -4,10 +4,10 @@
 
 #include "gol.h"
 
-Gol::Gol(const Array_2D<char>& table, std::size_t level) : table{table}, level{level} {}
+Gol::Gol(const Array_2D<char>& table, std::size_t level) : m_table{table}, m_level{level} {}
 Array_2D<char> Gol::get_table() const
 {
-    return this->table;
+    return m_table;
 }
 
 bool Gol::is_mushroom(const char& block)
@@ -58,8 +58,8 @@ Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level
 {
     std::vector<Update> updates;
     Array_2D<char> temp{table};
-    const std::size_t hight{this->table.hight()};
-    const std::size_t width{this->table.width()};
+    const std::size_t hight{m_table.hight()};
+    const std::size_t width{m_table.width()};
 
     for(std::size_t step{0}; step < level; ++step) {
         for (std::size_t i{0}; i < hight; ++i) {
@@ -86,11 +86,11 @@ Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level
 // Try to reverse current table state to reach the initial state of table
 Array_2D<char> Gol::solve()
 {
-    Array_2D<char> temp{this->table.hight(), this->table.width(), DEAD};
-    const std::size_t steps = pow(2, this->table.hight() * this->table.width());
+    Array_2D<char> temp{m_table.hight(), m_table.width(), DEAD};
+    const std::size_t steps = pow(2, m_table.hight() * m_table.width());
     for (std::size_t step{0}; step < steps; ++step) {
-        const Array_2D<char> new_table = this->evolve(temp, this->level);
-        if (this->table == new_table)
+        const Array_2D<char> newm_table = evolve(temp, m_level);
+        if (m_table == newm_table)
             return temp;
         temp = get_next_step(temp);
     }
