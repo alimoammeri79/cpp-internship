@@ -89,8 +89,8 @@ Array_2D<char> Gol::solve()
     Array_2D<char> temp{m_table.hight(), m_table.width(), DEAD};
     const std::size_t steps = pow(2, m_table.hight() * m_table.width());
     for (std::size_t step{0}; step < steps; ++step) {
-        const Array_2D<char> newm_table = evolve(temp, m_level);
-        if (m_table == newm_table)
+        const Array_2D<char> new_table = evolve(temp, m_level);
+        if (m_table == new_table)
             return temp;
         temp = get_next_step(temp);
     }
