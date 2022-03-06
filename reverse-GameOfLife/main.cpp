@@ -11,9 +11,10 @@ int main() {
 
     std::size_t hight{}, width{}, level{};
     std::cin >> hight >> width >> level;
-    if(!std::cin)
-        // Catching some exceptions
+    if(!std::cin) {
+        std::cerr << hight << " " << width << " "<< level << std::endl;
         throw std::runtime_error("You should enter numbers only");
+    }
 
     Array_2D<char> table{hight, width, '.'};
     // Getting input table
