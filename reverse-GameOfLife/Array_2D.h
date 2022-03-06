@@ -1,6 +1,6 @@
 /*
  * Created by alimoameri on 2/27/22.
- *
+ * A generic class for building 2d arrays
  */
 
 #ifndef Array_2D_H

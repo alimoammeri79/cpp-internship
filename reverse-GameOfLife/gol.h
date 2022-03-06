@@ -22,7 +22,7 @@ struct Update
     std::size_t column{};
 };
 
-// Game of life class
+// Game of life class interface
 class Gol
 {
 public:

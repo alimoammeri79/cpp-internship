@@ -1,5 +1,6 @@
     //
     // Created by alimoammeri on 20.02.22.
+    // Game of life class implementation
     //
 
 #include "gol.h"
@@ -25,11 +26,6 @@ void Gol::update_table(Array_2D<char>& table, const std::vector<Update>& updates
     }
 }
 
-/*
- *  table: table that we wonna count it's block's adjacent mushroms
- *  row: position of the block's row in the table
- *  column: position of the block's column in the table
- */
 std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size_t row, std::size_t column) const
 {
     std::size_t count{0};
@@ -38,17 +34,15 @@ std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size
 
     for(std::size_t i{row + hight - 1}; i <= row + hight + 1; ++i) {
         for (std::size_t j{column + width - 1}; j <= column + width + 1; ++j) {
-            if (i == (row + hight) && j == (column + width))
-                continue;
-            else {
-                std::size_t new_i = i  % hight;
-                std::size_t new_j = j  % width;
-                if (table[new_i][new_j] == MSHRM)
-                    ++count;
+            std::size_t new_i = i  % hight;
+            std::size_t new_j = j  % width;
+            if (table[new_i][new_j] == MSHRM)
+                ++count;
             }
         }
-    }
-    return count;
+
+    // Don't count current block
+    return count - 1;
 }
 
 Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level) const {
