@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 
+/* Interface */
 template <class Type>
 class Array_2D ;
 template <class Type>

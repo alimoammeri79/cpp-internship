@@ -5,17 +5,18 @@
 #include "gol.h"
 
 Gol::Gol(const Array_2D<char>& table, std::size_t level) : m_table{table}, m_level{level} {}
+
 Array_2D<char> Gol::get_table() const
 {
     return m_table;
 }
 
-bool Gol::is_mushroom(const char& block)
+bool Gol::is_mushroom(const char& block) const
 {
     return (block == MSHRM);
 }
 
-void Gol::update_table(Array_2D<char>& table, const std::vector<Update>& updates)
+void Gol::update_table(Array_2D<char>& table, const std::vector<Update>& updates) const
 {
     for(const auto& update: updates) {
         std::size_t row{update.row};
@@ -29,7 +30,7 @@ void Gol::update_table(Array_2D<char>& table, const std::vector<Update>& updates
  *  row: position of the block's row in the table
  *  column: position of the block's column in the table
  */
-std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size_t row, std::size_t column)
+std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size_t row, std::size_t column) const
 {
     std::size_t count{0};
     const std::size_t hight{table.hight()};
@@ -54,8 +55,7 @@ std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size
     return count;
 }
 
-Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level)
-{
+Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level) const {
     std::vector<Update> updates;
     Array_2D<char> temp{table};
     const std::size_t hight{m_table.hight()};
@@ -83,9 +83,7 @@ Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level
     return temp;
 }
 
-// Try to reverse current table state to reach the initial state of table
-Array_2D<char> Gol::solve()
-{
+Array_2D<char> Gol::solve() const {
     Array_2D<char> temp{m_table.hight(), m_table.width(), DEAD};
     const std::size_t steps = pow(2, m_table.hight() * m_table.width());
     for (std::size_t step{0}; step < steps; ++step) {
@@ -97,7 +95,7 @@ Array_2D<char> Gol::solve()
     return Array_2D<char>{};
  }
 
- const Array_2D<char> Gol::get_next_step(const Array_2D<char> &table)
+ const Array_2D<char> Gol::get_next_step(const Array_2D<char> &table) const
  {
     Array_2D<char> temp{table};
     if(temp[0][0] == DEAD) {
