@@ -41,8 +41,8 @@ std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size
             }
         }
 
-    // Don't count current block
-    return count - 1;
+    // Minus one in order to dosn't count current block
+    return count == 0 ? count : count - 1;
 }
 
 Array_2D<char> Gol::evolve(const Array_2D<char>& table, const std::size_t& level) const {
