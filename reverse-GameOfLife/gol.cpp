@@ -36,17 +36,13 @@ std::size_t Gol::count_adjacent_mushrooms(const Array_2D<char>& table, std::size
     const std::size_t hight{table.hight()};
     const std::size_t width{table.width()};
 
-    // Cast row and column to int, in order to dosn't break when minuses by one
-    int int_row{static_cast<int>(row)};
-    int int_column{static_cast<int>(column)};
-
-    for(int i{int_row - 1}; i <= int_row + 1; ++i) {
-        for (int j{int_column - 1}; j <= int_column + 1; ++j) {
-            if (i == int_row && j == int_column)
+    for(std::size_t i{row + hight - 1}; i <= row + hight + 1; ++i) {
+        for (std::size_t j{column + width - 1}; j <= column + width + 1; ++j) {
+            if (i == (row + hight) && j == (column + width))
                 continue;
             else {
-                std::size_t new_i = (i + hight) % hight;
-                std::size_t new_j = (j + width) % width;
+                std::size_t new_i = i  % hight;
+                std::size_t new_j = j  % width;
                 if (table[new_i][new_j] == MSHRM)
                     ++count;
             }
