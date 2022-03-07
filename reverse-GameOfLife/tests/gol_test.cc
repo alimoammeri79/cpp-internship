@@ -12,9 +12,9 @@ TEST(GolBoard, GetEmptyBoard) {
         '*','.','.'
         };
 
-    const Array_2D<char> board {hight, width, input};
+    const Array2d<char> board {hight, width, input};
     Gol gol {board, level};
-    const Array_2D<char> result { gol.solve() };
+    const Array2d<char> result { gol.solve() };
 
     EXPECT_EQ(1, result.is_empty());
 }
@@ -37,8 +37,8 @@ TEST(GolBoard, GetInitialBoard) {
          '*','.','.','.','.'
         };
 
-    const Array_2D<char> input_board {hight, width, input};
-    const Array_2D<char> output_board {hight, width, output};
+    const Array2d<char> input_board {hight, width, input};
+    const Array2d<char> output_board {hight, width, output};
 
     Gol gol {input_board, level};
 

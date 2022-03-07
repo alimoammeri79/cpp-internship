@@ -1,7 +1,7 @@
 cc_library(
     name = "build-all-the-files",
-    srcs = glob(["gol.cpp", "Array_2D.h"]),
-    hdrs = glob(["gol.h", "Array_2D.h"]),
+    srcs = glob(["gol.cpp", "Array2d.h"]),
+    hdrs = glob(["gol.h", "Array2d.h"]),
     visibility = ["//visibility:public"]
 )
 
@@ -10,7 +10,7 @@ cc_library(
 #     srcs = ["gol.cpp"],
 #     deps = [
 #         ":gol",
-#         ":Array_2D"
+#         ":Array2d"
 #     ],
 #     visibility = ["//visibility:public"]
 # )

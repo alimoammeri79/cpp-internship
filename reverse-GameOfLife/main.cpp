@@ -4,19 +4,17 @@
 **/
 
 #include <iostream>
-#include "Array_2D.h"
+#include "Array2d.h"
 #include "gol.h"
 
 int main() {
 
     std::size_t hight{}, width{}, level{};
     std::cin >> hight >> width >> level;
-    if(!std::cin) {
-        std::cerr << hight << " " << width << " "<< level << std::endl;
+    if(!std::cin)
         throw std::runtime_error("You should enter numbers only");
-    }
 
-    Array_2D<char> table{hight, width, '.'};
+    Array2d<char> table{hight, width, '.'};
     // Getting input table
     for(std::size_t i{0}; i < hight; ++i)
         for(std::size_t j{0}; j < width; ++j)
@@ -24,7 +22,7 @@ int main() {
 
 
     Gol gol{table, level};
-    const Array_2D<char> result{gol.solve()};
+    const Array2d<char> result{gol.solve()};
     if(result.is_empty())
         std::cout << "impossible" << "\n";
     else

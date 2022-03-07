@@ -3,8 +3,8 @@
  * A generic class for building 2d arrays
  */
 
-#ifndef Array_2D_H
-#define Array_2D_H
+#ifndef Array2d_H
+#define Array2d_H
 
 #include <cstddef>
 #include <vector>
@@ -13,27 +13,27 @@
 
 /* Interface */
 template <class Type>
-class Array_2D ;
+class Array2d ;
 template <class Type>
-std::ostream& operator<<(std::ostream&, const Array_2D<Type>&);
+std::ostream& operator<<(std::ostream&, const Array2d<Type>&);
 
 template <typename Type>
-class Array_2D {
+class Array2d {
 public:
-    Array_2D();
-    Array_2D(std::size_t hight, std::size_t width, const Type& fill);
-    Array_2D(std::size_t hight, std::size_t width, const std::vector<Type>& elements);
-    Array_2D(const Array_2D<Type>&);
+    Array2d();
+    Array2d(std::size_t hight, std::size_t width, const Type& fill);
+    Array2d(std::size_t hight, std::size_t width, const std::vector<Type>& elements);
+    Array2d(const Array2d<Type>&);
 
     std::size_t hight() const;
     std::size_t width() const;
     bool is_empty() const;
 
-    Array_2D& operator=(const Array_2D<Type>&);
-    bool operator==(const Array_2D<Type>&) const ;
+    Array2d& operator=(const Array2d<Type>&);
+    bool operator==(const Array2d<Type>&) const ;
     typename std::vector<Type>::iterator operator[] (const std::size_t& index);
     typename std::vector<Type>::const_iterator operator[](const std::size_t& index) const;
-    friend std::ostream& operator<< <> (std::ostream&, const Array_2D<Type>&);
+    friend std::ostream& operator<< <> (std::ostream&, const Array2d<Type>&);
 
 private:
     std::size_t m_hight{ 0 };
@@ -43,32 +43,32 @@ private:
 
 /* Implementation */
 template <typename Type>
-Array_2D<Type>::Array_2D()
+Array2d<Type>::Array2d()
         : m_hight{0}, m_width{0} {}
 
 template <typename Type>
-Array_2D<Type>::Array_2D(std::size_t hight, std::size_t width, const Type& fill):
+Array2d<Type>::Array2d(std::size_t hight, std::size_t width, const Type& fill):
         m_hight{hight}, m_width{width}, m_elements(hight * width, fill) {}
 
 template <typename Type>
-Array_2D<Type>::Array_2D(std::size_t hight, std::size_t width, const std::vector<Type>& elements)
+Array2d<Type>::Array2d(std::size_t hight, std::size_t width, const std::vector<Type>& elements)
         : m_hight{hight}, m_width{width}, m_elements{elements} {}
 
 template <typename Type>
-Array_2D<Type>::Array_2D(const Array_2D<Type>& Array_2D)
-        : m_hight{Array_2D.m_hight}, m_width{Array_2D.m_width}, m_elements{Array_2D.m_elements} {}
+Array2d<Type>::Array2d(const Array2d<Type>& array2d)
+        : m_hight{array2d.m_hight}, m_width{array2d.m_width}, m_elements{array2d.m_elements} {}
 
 template <typename Type>
-std::size_t Array_2D<Type>::hight() const { return m_hight; }
+std::size_t Array2d<Type>::hight() const { return m_hight; }
 
 template <typename Type>
-std::size_t Array_2D<Type>::width() const { return m_width; }
+std::size_t Array2d<Type>::width() const { return m_width; }
 
 template <typename Type>
-bool Array_2D<Type>::is_empty() const { return !(m_hight || m_width); }
+bool Array2d<Type>::is_empty() const { return !(m_hight || m_width); }
 
 template <typename Type>
-Array_2D<Type>& Array_2D<Type>::operator=(const Array_2D<Type>& array2D) {
+Array2d<Type>& Array2d<Type>::operator=(const Array2d<Type>& array2D) {
     m_hight = array2D.hight();
     m_width = array2D.width();
     for(const auto& element: array2D.m_elements)
@@ -77,7 +77,7 @@ Array_2D<Type>& Array_2D<Type>::operator=(const Array_2D<Type>& array2D) {
 }
 
 template <typename Type>
-bool Array_2D<Type>::operator== (const Array_2D<Type>& array2D) const {
+bool Array2d<Type>::operator== (const Array2d<Type>& array2D) const {
     for(std::size_t i{0}; i < array2D.hight(); ++i)
         for(std::size_t j{0}; j < array2D.width(); ++j)
             if((*this)[i][j] != array2D[i][j])
@@ -86,17 +86,17 @@ bool Array_2D<Type>::operator== (const Array_2D<Type>& array2D) const {
 }
 
 template <typename Type>
-typename std::vector<Type>::iterator Array_2D<Type>::operator[] (const std::size_t& index) {
+typename std::vector<Type>::iterator Array2d<Type>::operator[] (const std::size_t& index) {
     return m_elements.begin() + (index * width());
 }
 
 template <typename Type>
-typename std::vector<Type>::const_iterator Array_2D<Type>::operator[](const std::size_t& index) const {
+typename std::vector<Type>::const_iterator Array2d<Type>::operator[](const std::size_t& index) const {
     return m_elements.cbegin() + (index * width());
 }
 
 template <typename Type>
-std::ostream& operator<<(std::ostream& output, const Array_2D<Type>& array2D) {
+std::ostream& operator<<(std::ostream& output, const Array2d<Type>& array2D) {
     for (std::size_t i{0}; i < array2D.hight(); ++i) {
         for (std::size_t j{0}; j < array2D.width(); ++j)
             output << array2D[i][j];
@@ -105,4 +105,4 @@ std::ostream& operator<<(std::ostream& output, const Array_2D<Type>& array2D) {
     return output;
 }
 
-#endif //Array_2D_H
+#endif //Array2d_H
