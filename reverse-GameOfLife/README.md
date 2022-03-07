@@ -1,9 +1,6 @@
 <div>
-  To run the program, you can use <code>run.sh</code> script:
-  <pre><code>$ chmod +x run.sh</code></pre>
-  <pre><code>$ ./run.sh [TEST_CASE_NUMBER]</code></pre>
-
-  or bazel:
+  To build the program, you can use bazel:
   <pre><code>$ bazel build //:main --cxxopt='-std=c++17'</code></pre>
+  and run it with the following command:
   <pre><code>$ ./bazel-bin/main </code></pre>
 </div>
