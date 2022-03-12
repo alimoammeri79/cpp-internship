@@ -3,8 +3,8 @@
  * A generic class for building 2d arrays
  */
 
-#ifndef Array2d_H
-#define Array2d_H
+#ifndef ARRAY_2D
+#define ARRAY_2D
 
 #include <cstddef>
 #include <vector>
@@ -105,4 +105,4 @@ std::ostream& operator<<(std::ostream& output, const Array2d<Type>& array2D) {
     return output;
 }
 
-#endif //Array2d_H
+#endif //ARRAY_2D
