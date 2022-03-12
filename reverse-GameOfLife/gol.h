@@ -39,4 +39,4 @@ private:
     const Array2d<char> get_next_step(const Array2d<char> &table) const;
 };
 
-#endif //reverseGOL_gol_H
+#endif //GOL_H
