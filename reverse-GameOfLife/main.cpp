@@ -4,7 +4,7 @@
 **/
 
 #include <iostream>
-#include "Array2d.h"
+#include "array2d.h"
 #include "gol.h"
 
 int main() {
