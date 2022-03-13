@@ -1,0 +1,66 @@
+\hypertarget{classGol}{}\doxysection{Gol Class Reference}
+\label{classGol}\index{Gol@{Gol}}
+
+
+Game of life class.  
+
+
+
+
+{\ttfamily \#include $<$gol.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGol_ad8c1b73caf20afbc770bdd98c65470e7}{Gol}} (const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ \&table, std\+::size\+\_\+t level)
+\item 
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ \mbox{\hyperlink{classGol_a831b0d4bd9f35f634f24526e521ae38a}{get\+\_\+table}} () const
+\item 
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ \mbox{\hyperlink{classGol_a3e82a9c2c8a516c241026bc95abda5a8}{solve}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Game of life class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGol_ad8c1b73caf20afbc770bdd98c65470e7}\label{classGol_ad8c1b73caf20afbc770bdd98c65470e7}} 
+\index{Gol@{Gol}!Gol@{Gol}}
+\index{Gol@{Gol}!Gol@{Gol}}
+\doxysubsubsection{\texorpdfstring{Gol()}{Gol()}}
+{\footnotesize\ttfamily Gol\+::\+Gol (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ \&}]{table,  }\item[{std\+::size\+\_\+t}]{level }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em table} & game table \\
+\hline
+{\em level} & current level (how many evolves done on the table) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGol_a831b0d4bd9f35f634f24526e521ae38a}\label{classGol_a831b0d4bd9f35f634f24526e521ae38a}} 
+\index{Gol@{Gol}!get\_table@{get\_table}}
+\index{get\_table@{get\_table}!Gol@{Gol}}
+\doxysubsubsection{\texorpdfstring{get\_table()}{get\_table()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ Gol\+::get\+\_\+table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return current game board \begin{DoxyReturn}{Returns}
+current table state 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGol_a3e82a9c2c8a516c241026bc95abda5a8}\label{classGol_a3e82a9c2c8a516c241026bc95abda5a8}} 
+\index{Gol@{Gol}!solve@{solve}}
+\index{solve@{solve}!Gol@{Gol}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classArray2d}{Array2d}}$<$ char $>$ Gol\+::solve (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Find initial table state \begin{DoxyReturn}{Returns}
+initial table 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gol_8h}{gol.\+h}}\item 
+gol.\+cpp\end{DoxyCompactItemize}

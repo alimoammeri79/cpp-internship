@@ -1,0 +1,163 @@
+\hypertarget{classArray2d}{}\doxysection{Array2d$<$ Type $>$ Class Template Reference}
+\label{classArray2d}\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+
+
+\mbox{\hyperlink{classArray2d}{Array2d}} template class.  
+
+
+
+
+{\ttfamily \#include $<$array2d.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classArray2d_a7ea0a9e218ae57318d3dc51656d1eb64}{Array2d}} ()
+\item 
+\mbox{\hyperlink{classArray2d_a3bab37b9ecd2ebcc56c383ed168a8ec1}{Array2d}} (std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_a0f069c3e2fc266381bc2f4cf1c566d31}{hight}}, std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_aad603a214b4a585a32fd9e7781c146b3}{width}}, const Type \&fill)
+\item 
+\mbox{\hyperlink{classArray2d_a54b6c769540e88ebc754b1d7cf506216}{Array2d}} (std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_a0f069c3e2fc266381bc2f4cf1c566d31}{hight}}, std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_aad603a214b4a585a32fd9e7781c146b3}{width}}, const std\+::vector$<$ Type $>$ \&elements)
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_a0f069c3e2fc266381bc2f4cf1c566d31}{hight}} () const
+\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classArray2d_aad603a214b4a585a32fd9e7781c146b3}{width}} () const
+\item 
+bool \mbox{\hyperlink{classArray2d_abbab8ac0bc5c45fe2a23e2fdf45ebcc0}{is\+\_\+empty}} () const
+\item 
+\mbox{\hyperlink{classArray2d}{Array2d}} \& \mbox{\hyperlink{classArray2d_a6b41a9d2559492265c181c18230ff817}{operator=}} (const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&)
+\item 
+bool \mbox{\hyperlink{classArray2d_ae5b1407a0827ff2eeafc4f85ebb61891}{operator==}} (const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&) const
+\item 
+std\+::vector$<$ Type $>$\+::iterator \mbox{\hyperlink{classArray2d_af82f6753ff221fad8e80dbd227a68285}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::size\+\_\+t \&index)
+\item 
+std\+::vector$<$ Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{classArray2d_a3cf601831fdc72fcf52acec17c1505c6}{operator\mbox{[}$\,$\mbox{]}}} (const std\+::size\+\_\+t \&index) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classArray2d_a487037c2db12d92bddc9a94d4daf5c07}{operator$<$$<$}} (std\+::ostream \&, const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Type$>$\newline
+class Array2d$<$ Type $>$}
+
+\mbox{\hyperlink{classArray2d}{Array2d}} template class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classArray2d_a7ea0a9e218ae57318d3dc51656d1eb64}\label{classArray2d_a7ea0a9e218ae57318d3dc51656d1eb64}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!Array2d@{Array2d}}
+\index{Array2d@{Array2d}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{Array2d()}{Array2d()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::\mbox{\hyperlink{classArray2d}{Array2d}}}
+
+Default constructor \mbox{\Hypertarget{classArray2d_a3bab37b9ecd2ebcc56c383ed168a8ec1}\label{classArray2d_a3bab37b9ecd2ebcc56c383ed168a8ec1}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!Array2d@{Array2d}}
+\index{Array2d@{Array2d}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{Array2d()}{Array2d()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::\mbox{\hyperlink{classArray2d}{Array2d}} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{hight,  }\item[{std\+::size\+\_\+t}]{width,  }\item[{const Type \&}]{fill }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em hight} & Array hight (rows) \\
+\hline
+{\em width} & Array width (columns) \\
+\hline
+{\em width} & Object that we wonna fill array with it \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classArray2d_a54b6c769540e88ebc754b1d7cf506216}\label{classArray2d_a54b6c769540e88ebc754b1d7cf506216}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!Array2d@{Array2d}}
+\index{Array2d@{Array2d}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{Array2d()}{Array2d()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::\mbox{\hyperlink{classArray2d}{Array2d}} (\begin{DoxyParamCaption}\item[{std\+::size\+\_\+t}]{hight,  }\item[{std\+::size\+\_\+t}]{width,  }\item[{const std\+::vector$<$ Type $>$ \&}]{elements }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em hight} & Array hight (rows) \\
+\hline
+{\em width} & Array width (columns) \\
+\hline
+{\em width} & Initial elements \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classArray2d_a0f069c3e2fc266381bc2f4cf1c566d31}\label{classArray2d_a0f069c3e2fc266381bc2f4cf1c566d31}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!hight@{hight}}
+\index{hight@{hight}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{hight()}{hight()}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::hight}
+
+Get array hight \begin{DoxyReturn}{Returns}
+Array hight 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArray2d_abbab8ac0bc5c45fe2a23e2fdf45ebcc0}\label{classArray2d_abbab8ac0bc5c45fe2a23e2fdf45ebcc0}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!is\_empty@{is\_empty}}
+\index{is\_empty@{is\_empty}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{is\_empty()}{is\_empty()}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+bool \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::is\+\_\+empty}
+
+Check wheter array is empty \begin{DoxyReturn}{Returns}
+true if array is empty, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classArray2d_a6b41a9d2559492265c181c18230ff817}\label{classArray2d_a6b41a9d2559492265c181c18230ff817}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+\mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \& \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&}]{array2D }\end{DoxyParamCaption})}
+
+Assigment operator overloading \mbox{\Hypertarget{classArray2d_ae5b1407a0827ff2eeafc4f85ebb61891}\label{classArray2d_ae5b1407a0827ff2eeafc4f85ebb61891}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+bool \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&}]{array2D }\end{DoxyParamCaption}) const}
+
+Equality operator overloading \mbox{\Hypertarget{classArray2d_af82f6753ff221fad8e80dbd227a68285}\label{classArray2d_af82f6753ff221fad8e80dbd227a68285}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+std\+::vector$<$ Type $>$\+::iterator \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+
+\mbox{[}\mbox{]} operator overloading (read/write access) \mbox{\Hypertarget{classArray2d_a3cf601831fdc72fcf52acec17c1505c6}\label{classArray2d_a3cf601831fdc72fcf52acec17c1505c6}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+std\+::vector$<$ Type $>$\+::const\+\_\+iterator \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t \&}]{index }\end{DoxyParamCaption}) const}
+
+\mbox{[}\mbox{]} operator overloading (read access only) \mbox{\Hypertarget{classArray2d_aad603a214b4a585a32fd9e7781c146b3}\label{classArray2d_aad603a214b4a585a32fd9e7781c146b3}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!width@{width}}
+\index{width@{width}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{width()}{width()}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+std\+::size\+\_\+t \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$\+::width}
+
+Get array width \begin{DoxyReturn}{Returns}
+Array width 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classArray2d_a487037c2db12d92bddc9a94d4daf5c07}\label{classArray2d_a487037c2db12d92bddc9a94d4daf5c07}} 
+\index{Array2d$<$ Type $>$@{Array2d$<$ Type $>$}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Array2d$<$ Type $>$@{Array2d$<$ Type $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily template$<$typename Type $>$ \\
+std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{output,  }\item[{const \mbox{\hyperlink{classArray2d}{Array2d}}$<$ Type $>$ \&}]{array2D }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Stream insertion operator overloading (read access only) 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{array2d_8h}{array2d.\+h}}\end{DoxyCompactItemize}

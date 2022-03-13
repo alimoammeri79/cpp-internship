@@ -1,8 +1,3 @@
-    //
-    // Created by alimoammeri on 20.02.22.
-    // Game of life class implementation
-    //
-
 #include "gol.h"
 
 Gol::Gol(const Array2d<char>& table, std::size_t level) : m_table{table}, m_level{level} {}
@@ -85,8 +80,7 @@ Array2d<char> Gol::solve() const {
     return Array2d<char>{};
  }
 
- const Array2d<char> Gol::get_next_step(const Array2d<char> &table) const
- {
+ const Array2d<char> Gol::get_next_step(const Array2d<char> &table) const {
     Array2d<char> temp{table};
     if(temp[0][0] == DEAD) {
         temp[0][0] = MSHRM;

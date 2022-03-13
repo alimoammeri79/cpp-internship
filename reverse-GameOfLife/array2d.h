@@ -1,38 +1,74 @@
-/*
- * Created by alimoameri on 2/27/22.
- * A generic class for building 2d arrays
- */
-
 #ifndef ARRAY_2D
 #define ARRAY_2D
+
+/**
+ * @file array2d.h
+ * @author Ali Moameri (https://github.com/alimoammeri79)
+ * @brief A generic class for building 2d arrays
+ * @date 2022-03-13
+ */
 
 #include <cstddef>
 #include <vector>
 #include <string>
 #include <iostream>
 
-/* Interface */
 template <class Type>
 class Array2d ;
 template <class Type>
 std::ostream& operator<<(std::ostream&, const Array2d<Type>&);
 
+/**
+ * @brief Array2d template class
+ */
 template <typename Type>
 class Array2d {
 public:
+    /** Default constructor */
     Array2d();
-    Array2d(std::size_t hight, std::size_t width, const Type& fill);
-    Array2d(std::size_t hight, std::size_t width, const std::vector<Type>& elements);
-    Array2d(const Array2d<Type>&);
 
+    /**  Constructor
+     *   @param hight Array hight (rows)
+     *   @param width Array width (columns)
+     *   @param width Object that we wonna fill array with it
+     */
+    Array2d(std::size_t hight, std::size_t width, const Type& fill);
+
+    /**  Constructor
+     *   @param hight Array hight (rows)
+     *   @param width Array width (columns)
+     *   @param width Initial elements
+     */
+    Array2d(std::size_t hight, std::size_t width, const std::vector<Type>& elements);
+
+    /**  Get array hight 
+     *   @return Array hight
+     */
     std::size_t hight() const;
+
+    /**  Get array width 
+     *   @return Array width
+     */
     std::size_t width() const;
+
+    /**  Check wheter array is empty
+     *   @return true if array is empty, false otherwise
+     */
     bool is_empty() const;
 
+    /**  Assigment operator overloading */
     Array2d& operator=(const Array2d<Type>&);
+
+    /**  Equality operator overloading */
     bool operator==(const Array2d<Type>&) const ;
+
+    /**  [] operator overloading (read/write access) */
     typename std::vector<Type>::iterator operator[] (const std::size_t& index);
+
+    /**  [] operator overloading (read access only) */
     typename std::vector<Type>::const_iterator operator[](const std::size_t& index) const;
+
+    /**  Stream insertion operator overloading (read access only) */
     friend std::ostream& operator<< <> (std::ostream&, const Array2d<Type>&);
 
 private:
@@ -53,10 +89,6 @@ Array2d<Type>::Array2d(std::size_t hight, std::size_t width, const Type& fill):
 template <typename Type>
 Array2d<Type>::Array2d(std::size_t hight, std::size_t width, const std::vector<Type>& elements)
         : m_hight{hight}, m_width{width}, m_elements{elements} {}
-
-template <typename Type>
-Array2d<Type>::Array2d(const Array2d<Type>& array2d)
-        : m_hight{array2d.m_hight}, m_width{array2d.m_width}, m_elements{array2d.m_elements} {}
 
 template <typename Type>
 std::size_t Array2d<Type>::hight() const { return m_hight; }

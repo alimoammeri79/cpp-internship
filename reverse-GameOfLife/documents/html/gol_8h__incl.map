@@ -1,0 +1,10 @@
+<map id="gol.h" name="gol.h">
+<area shape="rect" id="node1" title="Game of life utilities." alt="" coords="220,5,275,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,68,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="92,155,163,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="291,155,350,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="325,80,410,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="435,80,497,107"/>
+<area shape="rect" id="node7" href="$array2d_8h.html" title="A generic class for building 2d arrays." alt="" coords="165,80,249,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="187,155,267,181"/>
+</map>
