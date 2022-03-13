@@ -40,18 +40,17 @@ std::size_t Gol::count_adjacent_mushrooms(const Array2d<char>& table, std::size_
     return count == 0 ? count : count - 1;
 }
 
-Array2d<char> Gol::evolve(const Array2d<char>& table, const std::size_t& level) const {
+std::vector<Update> Gol::get_next_step_updates(Array2d<char>& table){
     std::vector<Update> updates;
-    Array2d<char> temp{table};
-    const std::size_t hight{m_table.hight()};
-    const std::size_t width{m_table.width()};
 
-    for(std::size_t step{0}; step < level; ++step) {
-        for (std::size_t i{0}; i < hight; ++i) {
+    const std::size_t hight{table.hight()};
+    const std::size_t width{table.width()};
+
+    for (std::size_t i{0}; i < hight; ++i) {
             for (std::size_t j{0}; j < width; ++j) {
                 const std::size_t adjacent_mushrooms_count =
-                        count_adjacent_mushrooms(temp, i, j);
-                if (is_mushroom(temp[i][j])) {
+                        count_adjacent_mushrooms(table, i, j);
+                if (is_mushroom(table[i][j])) {
                     if (!((adjacent_mushrooms_count == 3) || (adjacent_mushrooms_count == 2)))
                         updates.push_back({DEAD, i, j});
                 } else {
@@ -60,6 +59,13 @@ Array2d<char> Gol::evolve(const Array2d<char>& table, const std::size_t& level) 
                 }
             }
         }
+    return updates;
+}
+
+Array2d<char> Gol::evolve(const Array2d<char>& table, const std::size_t& level) {
+    Array2d<char> temp{table};
+    for(std::size_t step{0}; step < level; ++step) {
+        std::vector<Update> updates {get_next_step_updates(temp)};
         if(updates.empty())
             break;
         else
@@ -68,7 +74,7 @@ Array2d<char> Gol::evolve(const Array2d<char>& table, const std::size_t& level) 
     return temp;
 }
 
-Array2d<char> Gol::solve() const {
+Array2d<char> Gol::solve() {
     Array2d<char> temp{m_table.hight(), m_table.width(), DEAD};
     const std::size_t steps = pow(2, m_table.hight() * m_table.width());
     for (std::size_t step{0}; step < steps; ++step) {

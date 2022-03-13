@@ -50,7 +50,7 @@ public:
     /** Find initial table state
      *  @return initial table
      */
-    Array2d<char> solve() const;
+    Array2d<char> solve();
 private:
     Array2d<char> m_table;
     std::size_t m_level;
@@ -61,12 +61,15 @@ private:
     */
     bool is_mushroom(const char& block) const;
 
+    std::vector<Update> get_next_step_updates(Array2d<char>& table);
+
     /** Evolve table "level" times 
      * @param table game table
      * @param level how many evoluotions?
      * @return table after evolutions
     */
-    Array2d<char> evolve(const Array2d<char>& table, const std::size_t& level) const;
+    Array2d<char> evolve(const Array2d<char>& table, const std::size_t& level);
+
 
     /** Count adjacent mushrooms of a given block
      * @param table game table
